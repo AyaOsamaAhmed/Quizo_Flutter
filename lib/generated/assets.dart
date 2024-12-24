@@ -3,4 +3,5 @@ class Assets {
   Assets._();
 
   static const String splash = 'assets/images/splash.svg';
+  static const String boarding = 'assets/images/boarding1.png';
   }
