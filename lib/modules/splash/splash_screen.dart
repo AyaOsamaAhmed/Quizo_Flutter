@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quizo_flutter/modules/onBoarding/on_boarding_1_Screen.dart';
-
 import '../../generated/assets.dart';
+import '../onBoarding/main_boarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
 
@@ -29,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     )..addListener(() {
       setState(() {
         if(animationController.value > 0.9)
-             Navigator.pushNamed(context,OnBoarding1Screen.routeName);
+             Navigator.pushNamed(context,MainBoardingScreen.routeName);
       });
     });
   //  animationController

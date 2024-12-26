@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:quizo_flutter/modules/onBoarding/main_boarding_screen.dart';
 import 'package:quizo_flutter/modules/splash/splash_screen.dart';
 
-import 'modules/onBoarding/on_boarding_1_Screen.dart';
+import 'modules/onBoarding/on_boarding_item_Screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         initialRoute: SplashScreen.routeName,
         routes: {
           SplashScreen.routeName :(context) => SplashScreen() ,
-          OnBoarding1Screen.routeName :(context) => OnBoarding1Screen() ,
+          MainBoardingScreen.routeName :(context) => MainBoardingScreen() ,
 
 
         }
