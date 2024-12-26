@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:quizo_flutter/models/boarding_model.dart';
+import 'package:quizo_flutter/modules/auth/createAccount/create_account_screen.dart';
+import 'package:quizo_flutter/modules/auth/login/login_screen.dart';
 import 'package:quizo_flutter/modules/onBoarding/slider_dots.dart';
 import 'dart:async';
 import '../../generated/strings.dart';
@@ -71,7 +73,9 @@ class _MainBoardingScreenState extends State<MainBoardingScreen>   with TickerPr
             width: double.infinity, // <-- match_parent
             height: 60, // <-- match-parent
             child:  ElevatedButton(   // MaterialButton
-              onPressed: () =>(){}, child: Text(Strings.login_account)
+              onPressed: () =>{
+                Navigator.pushNamed(context,LoginScreen.routeName)
+              }, child: Text(Strings.login_account)
               ,style: ElevatedButton.styleFrom( foregroundColor: Colors.white,
                 backgroundColor: Color(0xFF4C004D) , textStyle: TextStyle(fontSize: 20) ) ,
             ),
@@ -83,7 +87,9 @@ class _MainBoardingScreenState extends State<MainBoardingScreen>   with TickerPr
               width: double.infinity, // <-- match_parent
               height: 60, // <-- match-parent
               child:  ElevatedButton(   // MaterialButton
-                onPressed: () =>(){}, child: Text(Strings.create_account)
+                onPressed: () =>{
+                  Navigator.pushNamed(context,CreateAccountScreen.routeName)
+                }, child: Text(Strings.create_account)
                 ,style: ElevatedButton.styleFrom( foregroundColor: Colors.black,
                   backgroundColor: Color(0xFFEEEEEE), textStyle: TextStyle(fontSize: 20) ) ,
               ),
