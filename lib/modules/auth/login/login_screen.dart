@@ -102,7 +102,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                                 height: 60, // <-- match-parent
                                 child:  ElevatedButton(   // MaterialButton
                                   onPressed: () =>{
-                                    Navigator.pushNamed(context,LoginScreen.routeName)
+
                                   }, child: Text(Strings.login)
                                   ,style: ElevatedButton.styleFrom( foregroundColor: Colors.white,
                                     backgroundColor: Color(0xFF4C004D) , textStyle: TextStyle(fontSize: 20) ) ,
@@ -160,7 +160,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                             height: 60, // <-- match-parent
                             child:  ElevatedButton(   // MaterialButton
                               onPressed: () =>{
-                                Navigator.pushNamed(context,LoginScreen.routeName)
+
                               }, child: Text(Strings.login)
                               ,style: ElevatedButton.styleFrom( foregroundColor: Colors.white,
                                 backgroundColor: Color(0xFF4C004D) , textStyle: TextStyle(fontSize: 20) ) ,

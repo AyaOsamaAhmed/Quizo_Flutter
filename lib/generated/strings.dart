@@ -17,5 +17,8 @@ class Strings {
   static const String sub_login = "Please enter your phone number below.";
   static const String reset_password = "Reset Password ?";
 
+  static const String first_name = "First Name";
+  static const String last_name = "Last Name";
+
 
 }
