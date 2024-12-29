@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:quizo_flutter/modules/auth/login/login_controller.dart';
+import 'package:quizo_flutter/modules/auth/resetPassword/reset_password_screen.dart';
 import '../../../generated/strings.dart';
 import '../verifyOTP/verify_otp_screen.dart';
 
@@ -92,7 +93,9 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                                 Spacer(),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 10),
-                                  child: Text(Strings.reset_password ),
+                                  child: SizedBox(child: GestureDetector(child: Text(Strings.reset_password ) , onTap: (){
+                                    Navigator.pushNamed(context, ResetPasswordScreen.routeName);
+                                  },)),
                                 ),
                               ],
                             ),
