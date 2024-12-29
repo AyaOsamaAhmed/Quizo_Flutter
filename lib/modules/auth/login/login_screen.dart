@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:quizo_flutter/modules/auth/login/login_controller.dart';
 import '../../../generated/strings.dart';
+import '../verifyOTP/verify_otp_screen.dart';
 
 class LoginScreen extends StatefulWidget {
 
@@ -102,7 +103,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                                 height: 60, // <-- match-parent
                                 child:  ElevatedButton(   // MaterialButton
                                   onPressed: () =>{
-
+                                    Navigator.pushNamed(context,VerifyOtpScreen.routeName)
                                   }, child: Text(Strings.login)
                                   ,style: ElevatedButton.styleFrom( foregroundColor: Colors.white,
                                     backgroundColor: Color(0xFF4C004D) , textStyle: TextStyle(fontSize: 20) ) ,
@@ -160,7 +161,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                             height: 60, // <-- match-parent
                             child:  ElevatedButton(   // MaterialButton
                               onPressed: () =>{
-
+                                Navigator.pushNamed(context,VerifyOtpScreen.routeName)
                               }, child: Text(Strings.login)
                               ,style: ElevatedButton.styleFrom( foregroundColor: Colors.white,
                                 backgroundColor: Color(0xFF4C004D) , textStyle: TextStyle(fontSize: 20) ) ,

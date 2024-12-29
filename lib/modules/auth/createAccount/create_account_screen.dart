@@ -4,6 +4,8 @@ import 'package:quizo_flutter/modules/auth/createAccount/create_account_controll
 import '../../../generated/strings.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
+import '../verifyOTP/verify_otp_screen.dart';
+
 
 class CreateAccountScreen extends StatefulWidget {
 
@@ -149,7 +151,7 @@ class _CreateAccountScreenState extends StateMVC<CreateAccountScreen> {
                             height: 60, // <-- match-parent
                             child:  ElevatedButton(   // MaterialButton
                               onPressed: () =>{
-
+                                Navigator.pushNamed(context,VerifyOtpScreen.routeName)
                               }, child: Text(Strings.create_account)
                               ,style: ElevatedButton.styleFrom( foregroundColor: Colors.white,
                                 backgroundColor: Color(0xFF4C004D) , textStyle: TextStyle(fontSize: 20) ) ,
@@ -253,7 +255,7 @@ class _CreateAccountScreenState extends StateMVC<CreateAccountScreen> {
                               height: 60, // <-- match-parent
                               child:  ElevatedButton(   // MaterialButton
                                 onPressed: () =>{
-
+                                  Navigator.pushNamed(context,VerifyOtpScreen.routeName)
                                 }, child: Text(Strings.create_account)
                                 ,style: ElevatedButton.styleFrom( foregroundColor: Colors.white,
                                   backgroundColor: Color(0xFF4C004D) , textStyle: TextStyle(fontSize: 20) ) ,

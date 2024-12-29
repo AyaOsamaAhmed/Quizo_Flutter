@@ -54,6 +54,7 @@ dev_dependencies:
   provider: ^6.0.5
   get_it: ^7.6.0
   shared_preferences: ^2.1.1
+  flutter_otp_text_field: ^1.1.0+2
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

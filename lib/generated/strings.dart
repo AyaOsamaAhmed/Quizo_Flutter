@@ -20,5 +20,10 @@ class Strings {
   static const String first_name = "First Name";
   static const String last_name = "Last Name";
 
+  static const String verification_code = "Verification Code";
+  static const String verify = "Verify";
+  static const String resend_code = "Resend Code  1:12";
+
+
 
 }
