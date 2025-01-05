@@ -28,5 +28,7 @@ class Strings {
   static const String sub_reset_phone_number = "Enter account email address";
 
 
+  static const String  noInternetConnection = "No Internet Connection";
+  static const String status401Message = "status401Message";
 
 }
