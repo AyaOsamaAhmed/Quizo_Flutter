@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "264474699701",
+    "project_id": "chat-flutter-9be26",
+    "storage_bucket": "chat-flutter-9be26.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264474699701:android:188ca55d3b4a11a2711bfc",
+        "android_client_info": {
+          "package_name": "com.example.quizo_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqQbyhs83DdYGPCvEI_QHnKPLOhAmzhmE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

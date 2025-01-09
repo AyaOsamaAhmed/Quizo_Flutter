@@ -48,9 +48,7 @@ class LoginController extends ControllerMVC {
       if(context.mounted){
         Navigator.pushNamed(context,SplashScreen.routeName);
       }
-
     });
-
   }
 
 
