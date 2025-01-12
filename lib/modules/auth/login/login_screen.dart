@@ -33,6 +33,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset : false,
       appBar: AppBar(
         actions: [
           Padding(
@@ -155,7 +156,9 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                             Spacer(),
                             Padding(
                               padding: const EdgeInsets.only(top: 10),
-                              child: Text(Strings.reset_password ),
+                              child: SizedBox(child: GestureDetector(child: Text(Strings.reset_password ) , onTap: (){
+                                Navigator.pushNamed(context, ResetPasswordScreen.routeName);
+                              },)),
                             ),
                           ],
                         ),

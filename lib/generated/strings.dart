@@ -18,7 +18,9 @@ class Strings {
   static const String reset_password = "Reset Password ?";
 
   static const String first_name = "First Name";
+  static const String must_enter_first_name = "Must Enter First Name";
   static const String last_name = "Last Name";
+  static const String must_enter_last_name = "Must Enter Last Name";
 
   static const String verification_code = "Verification Code";
   static const String send_code = "Send Code";

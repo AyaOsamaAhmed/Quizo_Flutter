@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../generated/strings.dart';
+import '../verifyOTP/verify_otp_screen.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   static const routeName = "ResetPassword";
@@ -14,6 +15,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset : false,
       appBar: AppBar(
         title: Column(
           children: [
@@ -56,7 +58,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   height: 60, // <-- match-parent
                   child:  ElevatedButton(   // MaterialButton
                     onPressed: () =>{
-                    //  Navigator.pushNamed(context,VerifyOtpScreen.routeName)
+                      Navigator.pushNamed(context,VerifyOtpScreen.routeName)
                     }, child: Text(Strings.send_code)
                     ,style: ElevatedButton.styleFrom( foregroundColor: Colors.white,
                       backgroundColor: Color(0xFF4C004D) , textStyle: TextStyle(fontSize: 20) ) ,

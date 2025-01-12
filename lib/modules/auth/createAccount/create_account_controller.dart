@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
+import '../../../generated/strings.dart';
+import '../../../utilities/toast_helper.dart';
+
 
 class CreateAccountController extends ControllerMVC {
 
@@ -40,4 +43,15 @@ class CreateAccountController extends ControllerMVC {
     super.dispose();
   }
 
+   CheckValidationCreateAccount(){
+    var check = false ;
+      if(firstName.text.isEmpty){
+        ToastHelper.showError(message: Strings.must_enter_first_name);
+      }else if (lastName.text.isEmpty){
+        ToastHelper.showError(message: Strings.must_enter_last_name);
+      }else{
+        check = true ;
+      }
+    return check ;
+  }
 }

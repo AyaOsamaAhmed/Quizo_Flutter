@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:quizo_flutter/modules/auth/createAccount/create_account_screen.dart';
 import 'package:quizo_flutter/modules/auth/login/login_screen.dart';
@@ -6,9 +7,13 @@ import 'package:quizo_flutter/modules/auth/verifyOTP/verify_otp_screen.dart';
 import 'package:quizo_flutter/modules/onBoarding/main_boarding_screen.dart';
 import 'package:quizo_flutter/modules/splash/splash_screen.dart';
 
+import 'firebase_options.dart';
 import 'modules/onBoarding/on_boarding_item_Screen.dart';
 
-void main() {
+Future<void> main() async {
+/*  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );*/
   runApp(const MyApp());
 }
 

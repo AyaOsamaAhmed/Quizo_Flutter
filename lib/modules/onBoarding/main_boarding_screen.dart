@@ -53,6 +53,7 @@ class _MainBoardingScreenState extends State<MainBoardingScreen>   with TickerPr
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset : false,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(20,50,20,0),
         child: Column(

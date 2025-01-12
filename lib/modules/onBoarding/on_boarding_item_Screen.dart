@@ -19,6 +19,7 @@ class _OnBoardingItemScreenState extends State<OnBoardingItemScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset : false,
       body: Column(
           children: [
             Text(BoardingModel.sliderList[index].title,style:
