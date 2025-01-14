@@ -49,7 +49,7 @@ class _CreateAccountScreenState extends StateMVC<CreateAccountScreen> {
             SizedBox(child: Text(Strings.sub_create_account,style: TextStyle(fontSize: 15, color: Color(0xFF9E9E9E)) ,  )),
         Padding(
           padding: const EdgeInsets.only(top: 30),
-          child: DefaultTabController(
+          child: /*DefaultTabController(
             length: 2,
             child:Column(
               children: [
@@ -57,6 +57,7 @@ class _CreateAccountScreenState extends StateMVC<CreateAccountScreen> {
                 SizedBox(
                   height: 600,
                   child: TabBarView(children: [
+                    */
                     Column(
                       children: [
                         Padding(
@@ -121,28 +122,15 @@ class _CreateAccountScreenState extends StateMVC<CreateAccountScreen> {
                           padding: const EdgeInsets.only(top:25 , left: 10 , right: 10),
                           child: TextField(
                             decoration: InputDecoration(
-                                hintText: 'Password',
+                                hintText: 'Aya@gmail.com',
+                                labelText: Strings.email_address,
                                 border: OutlineInputBorder()
                             ),
                             autocorrect: true,
                             autofocus: true,
-                            keyboardType: TextInputType.text,
+                            keyboardType: TextInputType.emailAddress,
                             style: TextStyle(fontSize: 18,),
-                            controller: con.password,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top:25 , left: 10 , right: 10),
-                          child: TextField(
-                            decoration: InputDecoration(
-                                hintText: 'Confirm Password',
-                                border: OutlineInputBorder()
-                            ),
-                            autocorrect: true,
-                            autofocus: true,
-                            keyboardType: TextInputType.text,
-                            style: TextStyle(fontSize: 18,),
-                            controller: con.confirmPassword,
+                            controller: con.email,
                           ),
                         ),
                         Padding(
@@ -152,7 +140,8 @@ class _CreateAccountScreenState extends StateMVC<CreateAccountScreen> {
                             height: 60, // <-- match-parent
                             child:  ElevatedButton(   // MaterialButton
                               onPressed: () =>{
-                                Navigator.pushNamed(context,VerifyOtpScreen.routeName)
+                                con.onCreateAccount(context: context)
+                                //    Navigator.pushNamed(context,VerifyOtpScreen.routeName)
                               }, child: Text(Strings.create_account)
                               ,style: ElevatedButton.styleFrom( foregroundColor: Colors.white,
                                 backgroundColor: Color(0xFF4C004D) , textStyle: TextStyle(fontSize: 20) ) ,
@@ -162,7 +151,7 @@ class _CreateAccountScreenState extends StateMVC<CreateAccountScreen> {
 
                       ],
                     ),
-
+/*
                     Column(
                         children: [
                           Padding(
@@ -206,22 +195,8 @@ class _CreateAccountScreenState extends StateMVC<CreateAccountScreen> {
                             ),
                           ),
 
-                          Padding(
-                            padding: const EdgeInsets.only(top:25 , left: 10 , right: 10),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  hintText: 'Aya@gmail.com',
-                                  labelText: Strings.email_address,
-                                  border: OutlineInputBorder()
-                              ),
-                              autocorrect: true,
-                              autofocus: true,
-                              keyboardType: TextInputType.emailAddress,
-                              style: TextStyle(fontSize: 18,),
-                              controller: con.phone,
-                            ),
-                          ),
-                          Padding(
+
+                        /*  Padding(
                             padding: const EdgeInsets.only(top:25 , left: 10 , right: 10),
                             child: TextField(
                               decoration: InputDecoration(
@@ -248,7 +223,7 @@ class _CreateAccountScreenState extends StateMVC<CreateAccountScreen> {
                               style: TextStyle(fontSize: 18,),
                               controller: con.confirmPassword,
                             ),
-                          ),
+                          ),*/
                           Padding(
                             padding: const EdgeInsets.only(top: 20),
                             child: SizedBox(
@@ -265,16 +240,15 @@ class _CreateAccountScreenState extends StateMVC<CreateAccountScreen> {
                           ),
                         ]
                     ),
-                  ]),
-                )
+
+ */
+                  ),
+
               ],
             )
 
           ),
-        )
-          ],
-        ),
-      ),
-    );
+        );
+
   }
 }
