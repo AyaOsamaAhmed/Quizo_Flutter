@@ -1,41 +1,48 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:quizo_flutter/modules/splash/splash_controller.dart';
 import '../../generated/assets.dart';
 import '../onBoarding/main_boarding_screen.dart';
+import 'dart:async';
+
 
 class SplashScreen extends StatefulWidget {
 
   static const routeName = "Splash";
-  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen> {
 
+  double progressValue = 0.0;
 
-  late AnimationController animationController;
+//  SplashController con  = SplashController();
 
   @override
   void initState() {
-    animationController = AnimationController(
-      /// [AnimationController]s can be created with `vsync: this` because of
-      /// [TickerProviderStateMixin].
-      vsync: this,
-      duration: const Duration(seconds: 5),
-    )..addListener(() {
-      setState(() {
-        if(animationController.value > 0.9)
-             Navigator.pushNamed(context,MainBoardingScreen.routeName);
-      });
-    });
-  //  animationController
-    animationController.repeat(reverse: false);
-
     super.initState();
+
+    startProgress();
+
   }
+
+   void startProgress() {
+     // Timer to update progress every 100 milliseconds
+     Timer.periodic(Duration(milliseconds: 100), (timer) {
+       setState(() {
+         if (progressValue < 1.0) {
+           progressValue += 0.02; // Increment progress
+         } else {
+           timer.cancel(); // Stop the timer when progress is complete
+           Navigator.pushNamed(context,MainBoardingScreen.routeName);
+         }
+       });
+     });
+   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                 child: LinearProgressIndicator(
                   backgroundColor: Color(0xFFEEEEEE),
                   color: Color(0xFF4C004D) ,
-                  value: animationController.value,
+                  value: progressValue,
                   semanticsLabel: 'Linear progress indicator',
                 ),
               ),
@@ -62,11 +69,5 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
         )
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    animationController.dispose();
-    super.dispose();
   }
 }

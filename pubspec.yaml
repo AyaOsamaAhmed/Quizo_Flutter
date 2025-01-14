@@ -64,6 +64,8 @@ dev_dependencies:
   go_router: ^7.1.1
   flutter_cache_manager: ^3.3.2
   fluttertoast: ^8.1.0
+  onboarding_animation: ^0.0.3
+  loading_overlay: ^0.4.2
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

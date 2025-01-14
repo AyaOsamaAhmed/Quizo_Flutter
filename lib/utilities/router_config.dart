@@ -23,7 +23,7 @@ class GoRouterConfig {
         pageBuilder: (_, GoRouterState state) {
           return getCustomTransitionPage(
             state: state,
-            child: const SplashScreen(),
+            child:  SplashScreen(),
           );
         },
         routes: const <RouteBase>[],
