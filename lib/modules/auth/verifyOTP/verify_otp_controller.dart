@@ -30,7 +30,7 @@ class VerifyOtpController extends ControllerMVC {
       ToastHelper.showError(message: l.errorModel.statusMessage);
     }, (r) async{
       if(context.mounted){
-        Navigator.pushNamed(context,SplashScreen.routeName);
+        ToastHelper.showError(message: "Success Resent Code  ");
       }
     });
   }

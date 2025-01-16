@@ -10,17 +10,16 @@ import '../../../models/data_model.dart';
 import '../../../models/user_model.dart';
 import '../../../utilities/api_end_point.dart';
 
-class LoginDataHandeler {
+class ResetPasswordHandler {
 
 
-  static Future<Either<Failure,DataModel>> sendPhoneOtp({required String code , required String phone})async {
+  static Future<Either<Failure,DataModel>> SendEmailOtp({required String email})async {
     try {
       DataModel response = await GenericRequest<DataModel>(
         method: RequestApi.postJson(
-            url: APIEndPoint.SendPhoneOTP,
+            url: APIEndPoint.SendEmailOtp,
             bodyJson  : {
-              "countryCode": code ,
-              "phoneNumber": phone
+              "email": email
             }
         ),
         fromMap:(_)=> DataModel.fromJson(_),

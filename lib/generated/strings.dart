@@ -25,7 +25,7 @@ class Strings {
   static const String verification_code = "Verification Code";
   static const String send_code = "Send Code";
   static const String verify = "Verify";
-  static const String resend_code = "Resend Code  1:12";
+  static const String resend_code = "Resend Code";
   static const String reset_phone_number = "Reset Phone Number";
   static const String sub_reset_phone_number = "Enter account email address";
 

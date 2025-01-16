@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:quizo_flutter/modules/auth/resetPassword/reset_password_controller.dart';
 
 import '../../../generated/strings.dart';
-import '../verifyOTP/verify_otp_screen.dart';
+
+import 'package:mvc_pattern/mvc_pattern.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   static const routeName = "ResetPassword";
   const ResetPasswordScreen({super.key});
 
   @override
-  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
+  State createState() => _ResetPasswordScreenState();
 }
 
-class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
+class _ResetPasswordScreenState extends StateMVC<ResetPasswordScreen> {
+
+  late ResetPasswordController con ;
+
+  _ResetPasswordScreenState() : super (ResetPasswordController()){
+    con = ResetPasswordController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +57,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   autofocus: true,
                   keyboardType: TextInputType.emailAddress,
                   style: TextStyle(fontSize: 18,),
-                 // controller: con.phone,
+                  controller: con.email,
                 ),
               ),
               Padding(
@@ -58,7 +67,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   height: 60, // <-- match-parent
                   child:  ElevatedButton(   // MaterialButton
                     onPressed: () =>{
-                      Navigator.pushNamed(context,VerifyOtpScreen.routeName)
+                      con.SendEmailOtp(context: context)
                     }, child: Text(Strings.send_code)
                     ,style: ElevatedButton.styleFrom( foregroundColor: Colors.white,
                       backgroundColor: Color(0xFF4C004D) , textStyle: TextStyle(fontSize: 20) ) ,

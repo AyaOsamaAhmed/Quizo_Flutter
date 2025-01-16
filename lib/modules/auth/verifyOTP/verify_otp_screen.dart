@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:quizo_flutter/modules/auth/verifyOTP/verify_otp_controller.dart';
 
@@ -24,7 +26,31 @@ class _VerifyOtpScreenState extends StateMVC<VerifyOtpScreen> {
   _VerifyOtpScreenState () : super(VerifyOtpController()){
     con =VerifyOtpController();
   }
-  
+
+
+  int progressValue = 60;
+
+  @override
+  void initState() {
+    super.initState();
+
+    startProgress();
+  }
+  void startProgress() {
+    // Timer to update progress every 800 milliseconds
+    Timer.periodic(Duration(milliseconds: 800), (timer) {
+      setState(() {
+        if (progressValue > 0) {
+          progressValue -= 1; // Increment progress
+
+        } else {
+          timer.cancel(); // Stop the timer when progress is complete
+
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // Retrieve the arguments
@@ -72,10 +98,11 @@ class _VerifyOtpScreenState extends StateMVC<VerifyOtpScreen> {
                                     content: Text('Code entered is $verificationCode'),
                                   ); }
                 );*/
-                if(con.page == 'login' ) {
-                  con.otp = verificationCode;
+                con.otp = verificationCode;
+              /*  if(con.page == 'login' ) {
+
                   con.onLogIn(context: context);
-                }
+                }*/
 
               }, // end onSubmit
             ),
@@ -97,6 +124,21 @@ class _VerifyOtpScreenState extends StateMVC<VerifyOtpScreen> {
               ),
             ),
           ),
+          if(progressValue > 0)
+          Padding(
+            padding: const EdgeInsets.only(top: 20 ,left: 20 , right: 20),
+            child: SizedBox(
+              width: double.infinity, // <-- match_parent
+              height: 60, // <-- match-parent
+              child:  ElevatedButton(   // MaterialButton
+                onPressed: () =>{
+                }, child: Text("${Strings.resend_code} $progressValue")
+                ,style: ElevatedButton.styleFrom( foregroundColor: Colors.grey,
+                  backgroundColor: Color(0xFFE0E0E0) , textStyle: TextStyle(fontSize: 20) ) ,
+              ),
+            ),
+          ),
+        if(progressValue == 0 )
           Padding(
             padding: const EdgeInsets.only(top: 20 ,left: 20 , right: 20),
             child: SizedBox(
@@ -105,9 +147,9 @@ class _VerifyOtpScreenState extends StateMVC<VerifyOtpScreen> {
               child:  ElevatedButton(   // MaterialButton
                 onPressed: () =>{
                   con.onSendPhoneOTP(context: context)
-                }, child: Text(Strings.resend_code)
-                ,style: ElevatedButton.styleFrom( foregroundColor: Colors.grey,
-                  backgroundColor: Color(0xFFE0E0E0) , textStyle: TextStyle(fontSize: 20) ) ,
+                }, child: Text("${Strings.resend_code}")
+                ,style: ElevatedButton.styleFrom( foregroundColor: Colors.white,
+                  backgroundColor: Color(0xFF4C004D) , textStyle: TextStyle(fontSize: 20) ) ,
               ),
             ),
           ),
