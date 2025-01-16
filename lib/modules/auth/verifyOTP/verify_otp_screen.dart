@@ -12,8 +12,20 @@ class VerifyOtpScreen extends StatefulWidget {
 }
 
 class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
+
+
   @override
   Widget build(BuildContext context) {
+    // Retrieve the arguments
+    final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
+
+
+    String phone = "${args['phone']}";
+    String code = "${args['code']}";
+    String page = "${args['page']}";
+
+
+
     return Scaffold(
       resizeToAvoidBottomInset : false,
       appBar: AppBar(
@@ -62,7 +74,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
               height: 60, // <-- match-parent
               child:  ElevatedButton(   // MaterialButton
                 onPressed: () =>{
-                  Navigator.pushNamed(context,VerifyOtpScreen.routeName)
+
                 }, child: Text(Strings.verify)
                 ,style: ElevatedButton.styleFrom( foregroundColor: Colors.white,
                   backgroundColor: Color(0xFF4C004D) , textStyle: TextStyle(fontSize: 20) ) ,

@@ -66,7 +66,8 @@ class CreateAccountController extends ControllerMVC {
     }, (r) async{
       if(context.mounted){
         ToastHelper.showError(message: "Success account ");
-        Navigator.pushNamed(context,VerifyOtpScreen.routeName);
+        Navigator.pushNamed(context,VerifyOtpScreen.routeName ,
+            arguments: {'phone': '${phone.text}' , 'code' : '20' , 'page': 'registration'});
       }
     });
   }

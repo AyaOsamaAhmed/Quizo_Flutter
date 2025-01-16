@@ -12,25 +12,20 @@ import '../../../models/data_model.dart';
 import '../../../models/user_model.dart';
 import '../../../utilities/api_end_point.dart';
 
-class CreateAccountDataHandler {
+class VerifyOtpDataHandler {
 
 
-  static Future<Either<Failure,DataModel>> registration({required String firstName ,required String lastName
-          ,required String email ,required String phoneNumber  })async {
+  static Future<Either<Failure,CreateAccountModel>> sendPhoneOTP({required String code ,required String phoneNumber  })async {
     try {
-      DataModel response = await GenericRequest<DataModel>(
+      CreateAccountModel response = await GenericRequest<CreateAccountModel>(
         method: RequestApi.postJson(
-            url: APIEndPoint.Register,
+            url: APIEndPoint.SendPhoneOTP,
             bodyJson  : {
-              "firstName": firstName,
-              "lastName": lastName,
-              "email": email,
-              "countryCode": "20",
-              "phoneNumber": "20$phoneNumber",
-              "deviceId": "1"
+              "countryCode": code,
+              "phoneNumber": phoneNumber,
             }
         ),
-        fromMap:(_)=> DataModel.fromJson(_),
+        fromMap:(_)=> CreateAccountModel.fromJson(_),
       ).getResponse();
       return Right(response);
     } on ServerException catch (failure) {

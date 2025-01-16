@@ -4,20 +4,20 @@
 
 import 'dart:ffi';
 
-class CreateAccountModel {
+class DataModel {
   final String? data;
   final String? message;
   final Bool? status;
 
-  CreateAccountModel({
+  DataModel({
     this.data ,
     this.message,
      this.status
   });
 
-  factory CreateAccountModel.fromJson(Map<String, dynamic> json) =>
-      CreateAccountModel(
-      //  data: json["data"],
+  factory DataModel.fromJson(Map<String, dynamic> json) =>
+      DataModel(
+        data: json["data"],
         message: json["message"],
       //  status: json["status"],
       );
