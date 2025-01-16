@@ -4,6 +4,7 @@ import 'package:quizo_flutter/modules/auth/createAccount/create_account_screen.d
 import 'package:quizo_flutter/modules/auth/login/login_screen.dart';
 import 'package:quizo_flutter/modules/auth/resetPassword/reset_password_screen.dart';
 import 'package:quizo_flutter/modules/auth/verifyOTP/verify_otp_screen.dart';
+import 'package:quizo_flutter/modules/home/home_screen.dart';
 import 'package:quizo_flutter/modules/onBoarding/main_boarding_screen.dart';
 import 'package:quizo_flutter/modules/splash/splash_screen.dart';
 
@@ -53,8 +54,7 @@ class MyApp extends StatelessWidget {
           CreateAccountScreen.routeName :(context) => CreateAccountScreen() ,
           VerifyOtpScreen.routeName :(context) => VerifyOtpScreen() ,
           ResetPasswordScreen.routeName :(context) => ResetPasswordScreen() ,
-
-
+          HomeScreen.routeName :(context) => HomeScreen() ,
         }
 
     );

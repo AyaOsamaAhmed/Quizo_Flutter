@@ -1,28 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:quizo_flutter/modules/auth/verifyOTP/verify_otp_controller.dart';
 
 import '../../../generated/strings.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
+import 'package:mvc_pattern/mvc_pattern.dart';
+
+
+
 class VerifyOtpScreen extends StatefulWidget {
+
   static const routeName = "VerifyOtp";
   const VerifyOtpScreen({super.key});
 
   @override
-  State<VerifyOtpScreen> createState() => _VerifyOtpScreenState();
+  _VerifyOtpScreenState createState() => _VerifyOtpScreenState();
 }
 
-class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
+class _VerifyOtpScreenState extends StateMVC<VerifyOtpScreen> {
 
+  late VerifyOtpController  con ;
 
+  _VerifyOtpScreenState () : super(VerifyOtpController()){
+    con =VerifyOtpController();
+  }
+  
   @override
   Widget build(BuildContext context) {
     // Retrieve the arguments
     final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
 
 
-    String phone = "${args['phone']}";
-    String code = "${args['code']}";
-    String page = "${args['page']}";
+     con.phone = "${args['phone']}";
+     con.code = "${args['code']}";
+     con.page = "${args['page']}";
 
 
 
@@ -43,7 +54,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 100 , bottom: 50),
             child: OtpTextField(
-              numberOfFields: 5,
+              numberOfFields: 6,
               margin:	EdgeInsets.only(right: 20.0),
               borderColor: Color(0xFF512DA8),
               //set to true to show as box or false to show as dash
@@ -54,15 +65,18 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
               },
               //runs when every textfield is filled
               onSubmit: (String verificationCode){
-                showDialog(
-                    context: context,
-                    builder: (context){
-                      return AlertDialog(
-                        title: Text("Verification Code"),
-                        content: Text('Code entered is $verificationCode'),
-                      );
-                    }
-                );
+                /* showDialog( context: context,
+                                builder: (context){
+                                  return AlertDialog(
+                                    title: Text("Verification Code"),
+                                    content: Text('Code entered is $verificationCode'),
+                                  ); }
+                );*/
+                if(con.page == 'login' ) {
+                  con.otp = verificationCode;
+                  con.onLogIn(context: context);
+                }
+
               }, // end onSubmit
             ),
           ),
@@ -74,7 +88,9 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
               height: 60, // <-- match-parent
               child:  ElevatedButton(   // MaterialButton
                 onPressed: () =>{
-
+                    if(con.page == 'login' )
+                      con.onLogIn(context: context)
+                
                 }, child: Text(Strings.verify)
                 ,style: ElevatedButton.styleFrom( foregroundColor: Colors.white,
                   backgroundColor: Color(0xFF4C004D) , textStyle: TextStyle(fontSize: 20) ) ,
@@ -88,7 +104,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
               height: 60, // <-- match-parent
               child:  ElevatedButton(   // MaterialButton
                 onPressed: () =>{
-                  Navigator.pushNamed(context,VerifyOtpScreen.routeName)
+                  con.onSendPhoneOTP(context: context)
                 }, child: Text(Strings.resend_code)
                 ,style: ElevatedButton.styleFrom( foregroundColor: Colors.grey,
                   backgroundColor: Color(0xFFE0E0E0) , textStyle: TextStyle(fontSize: 20) ) ,

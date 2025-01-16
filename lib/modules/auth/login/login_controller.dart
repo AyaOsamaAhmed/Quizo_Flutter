@@ -50,17 +50,7 @@ class LoginController extends ControllerMVC {
     });
   }
 
-  Future onLogIn({required BuildContext context}) async {
-    setState(() {});
-    final result = await LoginDataHandeler.login(phone: phone.text);
-    result.fold((l) {
-      ToastHelper.showError(message: l.errorModel.statusMessage);
-    }, (r) async{
-      if(context.mounted){
-        Navigator.pushNamed(context,SplashScreen.routeName);
-      }
-    });
-  }
+
 
 
 }

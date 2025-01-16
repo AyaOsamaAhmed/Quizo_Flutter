@@ -15,9 +15,9 @@ import '../../../utilities/api_end_point.dart';
 class VerifyOtpDataHandler {
 
 
-  static Future<Either<Failure,CreateAccountModel>> sendPhoneOTP({required String code ,required String phoneNumber  })async {
+  static Future<Either<Failure,DataModel>> sendPhoneOTP({required String code ,required String phoneNumber  })async {
     try {
-      CreateAccountModel response = await GenericRequest<CreateAccountModel>(
+      DataModel response = await GenericRequest<DataModel>(
         method: RequestApi.postJson(
             url: APIEndPoint.SendPhoneOTP,
             bodyJson  : {
@@ -25,7 +25,27 @@ class VerifyOtpDataHandler {
               "phoneNumber": phoneNumber,
             }
         ),
-        fromMap:(_)=> CreateAccountModel.fromJson(_),
+        fromMap:(_)=> DataModel.fromJson(_),
+      ).getResponse();
+      return Right(response);
+    } on ServerException catch (failure) {
+      print("${failure.errorMessageModel}");
+      return Left(ServerFailure(failure.errorMessageModel));
+    }
+  }
+
+  static Future<Either<Failure,UserModel>> login({required String phone , required String otp })async {
+    try {
+      UserModel response = await GenericRequest<UserModel>(
+        method: RequestApi.postJson(
+            url: APIEndPoint.login,
+            bodyJson  : {
+              "phoneNumber": phone,
+              "otp": otp,
+              "deviceId" : ""
+            }
+        ),
+        fromMap: (res) => UserModel.fromJson(res["user"])..token = res["token"],
       ).getResponse();
       return Right(response);
     } on ServerException catch (failure) {
