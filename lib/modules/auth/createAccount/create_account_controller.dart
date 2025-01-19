@@ -20,6 +20,11 @@ class CreateAccountController extends ControllerMVC {
   CreateAccountController._();
 
   late TextEditingController firstName , lastName ,  email , phone , password , confirmPassword;
+
+
+  bool loading = false ;
+
+
   @override
   void initState() {
 
@@ -59,10 +64,13 @@ class CreateAccountController extends ControllerMVC {
   }
 
   Future onCreateAccount({required BuildContext context}) async {
-    setState(() {});
+    setState(() {
+      loading = true;
+    });
     final result = await CreateAccountDataHandler.registration(firstName: firstName.text , lastName: lastName.text , email: email.text , phoneNumber: phone.text);
     result.fold((l) {
       ToastHelper.showError(message: l.errorModel.statusMessage);
+      onReset();
     }, (r) async{
       if(context.mounted){
         ToastHelper.showError(message: "Success account ");
@@ -70,6 +78,10 @@ class CreateAccountController extends ControllerMVC {
             arguments: {'phone': '${phone.text}' , 'code' : '20' , 'page': 'registration'});
       }
     });
+  }
+
+  onReset() {
+    loading = false;
   }
 
 

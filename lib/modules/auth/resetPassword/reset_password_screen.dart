@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quizo_flutter/modules/auth/resetPassword/reset_password_controller.dart';
-
 import '../../../generated/strings.dart';
-
 import 'package:mvc_pattern/mvc_pattern.dart';
+import '../../../widgets/LoadingScreen.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   static const routeName = "ResetPassword";
@@ -22,8 +21,15 @@ class _ResetPasswordScreenState extends StateMVC<ResetPasswordScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    con.onReset();
+  }
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return LoadingScreen(
+        loading: con.loading,
+        child: Scaffold(
       resizeToAvoidBottomInset : false,
       appBar: AppBar(
         title: Column(
@@ -78,6 +84,7 @@ class _ResetPasswordScreenState extends StateMVC<ResetPasswordScreen> {
           ),
         ),
       ),
+    ),
     );
   }
 }

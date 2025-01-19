@@ -18,13 +18,13 @@ class VerifyOtpController extends ControllerMVC {
   VerifyOtpController._();
 
 
-  String code = "" ;
-  String phone = "" ;
-  String page = "" ;
-  String otp = "" ;
+  String code = ""  , phone = ""  , page = ""  , otp = "" ;
 
+  bool loading = false ;
   Future onSendPhoneOTP({required BuildContext context}) async {
-    setState(() {});
+    setState(() {
+      loading = true;
+    });
     final result = await VerifyOtpDataHandler.sendPhoneOTP(code: code , phoneNumber: phone);
     result.fold((l) {
       ToastHelper.showError(message: l.errorModel.statusMessage);
@@ -36,10 +36,13 @@ class VerifyOtpController extends ControllerMVC {
   }
 
   Future onLogIn({required BuildContext context}) async {
-    setState(() {});
+    setState(() {
+      loading = true;
+    });
     final result = await VerifyOtpDataHandler.login(phone: phone ,otp: otp );
     result.fold((l) {
       ToastHelper.showError(message: l.errorModel.statusMessage);
+      onReset();
     }, (r) async{
       if(context.mounted){
         ToastHelper.showError(message: "Success login ");
@@ -47,7 +50,9 @@ class VerifyOtpController extends ControllerMVC {
       }
     });
   }
-
+  onReset() {
+    loading = false;
+  }
 
 
 }

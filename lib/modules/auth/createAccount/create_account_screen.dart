@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:quizo_flutter/modules/auth/createAccount/create_account_controller.dart';
-
 import '../../../generated/strings.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 
-import '../verifyOTP/verify_otp_screen.dart';
+import '../../../widgets/LoadingScreen.dart';
 
 
 class CreateAccountScreen extends StatefulWidget {
@@ -29,8 +28,17 @@ class _CreateAccountScreenState extends StateMVC<CreateAccountScreen> {
   ];
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    con.onReset();
+
+  }
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return LoadingScreen(
+        loading: con.loading,
+        child: Scaffold(
       resizeToAvoidBottomInset : false,
       appBar: AppBar(
         actions: [
@@ -248,7 +256,7 @@ class _CreateAccountScreenState extends StateMVC<CreateAccountScreen> {
             )
 
           ),
-        );
+        ));
 
   }
 }

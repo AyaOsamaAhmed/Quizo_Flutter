@@ -8,14 +8,19 @@ import 'package:quizo_flutter/modules/home/home_screen.dart';
 import 'package:quizo_flutter/modules/onBoarding/main_boarding_screen.dart';
 import 'package:quizo_flutter/modules/splash/splash_screen.dart';
 
+import 'core/Theme/theme_provider.dart';
 import 'firebase_options.dart';
 import 'modules/onBoarding/on_boarding_item_Screen.dart';
-
+import 'package:provider/provider.dart';
 Future<void> main() async {
 /*  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );*/
-  runApp(const MyApp());
+  runApp(
+      ChangeNotifierProvider(
+        create: (context) => ThemeProvider(),
+        child: MyApp(),
+        ));
 }
 
 class MyApp extends StatelessWidget {
@@ -46,6 +51,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),*/
+      //  theme: Provider.of<ThemeProvider>(context).getTheme(),
+
         initialRoute: SplashScreen.routeName,
         routes: {
           SplashScreen.routeName :(context) => SplashScreen() ,

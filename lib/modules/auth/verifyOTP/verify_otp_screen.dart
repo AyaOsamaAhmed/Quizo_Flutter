@@ -8,6 +8,8 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 import 'package:mvc_pattern/mvc_pattern.dart';
 
+import '../../../widgets/LoadingScreen.dart';
+
 
 
 class VerifyOtpScreen extends StatefulWidget {
@@ -35,6 +37,9 @@ class _VerifyOtpScreenState extends StateMVC<VerifyOtpScreen> {
     super.initState();
 
     startProgress();
+
+    con.onReset();
+
   }
   void startProgress() {
     // Timer to update progress every 800 milliseconds
@@ -62,8 +67,9 @@ class _VerifyOtpScreenState extends StateMVC<VerifyOtpScreen> {
      con.page = "${args['page']}";
 
 
-
-    return Scaffold(
+    return LoadingScreen(
+        loading: con.loading,
+        child:Scaffold(
       resizeToAvoidBottomInset : false,
       appBar: AppBar(
         title: Center(child: Text(Strings.verification_code)),
@@ -155,6 +161,6 @@ class _VerifyOtpScreenState extends StateMVC<VerifyOtpScreen> {
           ),
         ],
       ),
-    );
+    ));
   }
 }

@@ -21,13 +21,17 @@ class LoginController extends ControllerMVC {
   late TextEditingController phone ;
   String code = "20";
 
+
+  bool loading = false ;
   @override
   void initState() {
     phone = TextEditingController();
 
     super.initState();
   }
-
+  onReset() {
+    loading = false;
+  }
 
 
   @override
@@ -37,10 +41,13 @@ class LoginController extends ControllerMVC {
   }
 
   Future sendPhoneOtp({required BuildContext context}) async {
-    setState(() {});
+    setState(() {
+      loading = true;
+    });
     final result = await LoginDataHandeler.sendPhoneOtp(phone: phone.text , code: code);
     result.fold((l) {
       ToastHelper.showError(message: l.errorModel.statusMessage);
+      onReset();
     }, (r) async{
       if(context.mounted){
         print("${r.data}");

@@ -4,6 +4,7 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:quizo_flutter/modules/auth/login/login_controller.dart';
 import 'package:quizo_flutter/modules/auth/resetPassword/reset_password_screen.dart';
 import '../../../generated/strings.dart';
+import '../../../widgets/LoadingScreen.dart';
 import '../verifyOTP/verify_otp_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -32,7 +33,9 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return LoadingScreen(
+        loading: con.loading,
+        child:Scaffold(
       resizeToAvoidBottomInset : false,
       appBar: AppBar(
         actions: [
@@ -109,8 +112,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
 
 
                   )
-
-
+        )
     );
   }
 }
